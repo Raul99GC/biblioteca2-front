@@ -1,18 +1,18 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { getBooks, deleteMyBook } from "@/lib/api"
-import { useAuth } from "@/lib/auth-context"
-import type { Book } from "@/lib/types"
-import { Search, BookOpen, Star, Filter, Grid3X3, List, Upload, Trash2 } from "lucide-react"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { deleteMyBook, getBooks } from "@/lib/api"
+import { useAuth } from "@/lib/auth-context"
+import type { Book } from "@/lib/types"
+import { BookOpen, Filter, Grid3X3, List, Search, Star, Trash2, Upload } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { useCallback, useEffect, useState } from "react"
 
 const categorias = ["Todas", "Informatica", "Matematicas", "Fisica", "Quimica"]
 
@@ -162,6 +162,7 @@ export default function CatalogoPage() {
                           src={book.portada}
                           alt={book.titulo}
                           fill
+                          unoptimized
                           className="object-cover group-hover:scale-105 transition-transform"
                         />
                       ) : (
@@ -225,6 +226,7 @@ export default function CatalogoPage() {
                           src={book.portada}
                           alt={book.titulo}
                           fill
+                          unoptimized
                           className="object-cover group-hover:scale-105 transition-transform"
                         />
                       ) : (

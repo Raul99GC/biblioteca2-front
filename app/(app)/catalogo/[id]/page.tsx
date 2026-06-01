@@ -1,28 +1,37 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
-import { useParams, useRouter } from "next/navigation"
-import Image from "next/image"
-import { getBookById, createLoan, getBookReviews, createReview, deleteReview, addFavorite, removeFavorite, isBookFavorited, getFavorites, deleteMyBook } from "@/lib/api"
+import {
+    AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+    AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { Textarea } from "@/components/ui/textarea"
+import { addFavorite, createLoan, createReview, deleteMyBook, deleteReview, getBookById, getBookReviews, getFavorites, isBookFavorited, removeFavorite } from "@/lib/api"
 import { useAuth } from "@/lib/auth-context"
 import type { Book, BookReview, CreateReviewPayload } from "@/lib/types"
 import {
-  BookOpen, Star, ArrowLeft, BookMarked, Calendar, Globe, Building2,
-  Hash, Tag, Loader2, Heart, MessageSquare, Send, Trash2,
+    ArrowLeft, BookMarked,
+    BookOpen,
+    Building2,
+    Calendar, Globe,
+    Hash,
+    Heart,
+    Loader2,
+    MessageSquare, Send,
+    Star,
+    Tag,
+    Trash2,
 } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Label } from "@/components/ui/label"
-import {
-  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
-  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+import Image from "next/image"
+import { useParams, useRouter } from "next/navigation"
+import { useCallback, useEffect, useState } from "react"
 
 export default function BookDetailPage() {
   const params = useParams()
@@ -200,6 +209,7 @@ export default function BookDetailPage() {
                   src={book.portada}
                   alt={book.titulo}
                   fill
+                  unoptimized
                   className="object-cover"
                 />
               ) : (
