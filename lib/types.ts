@@ -43,6 +43,7 @@ export interface Loan {
   libroId: string
   libro: Book
   usuarioId: string
+  tipo: string
   fechaPrestamo: string
   fechaDevolucion: string
   estado: "activo" | "devuelto" | "vencido"
